@@ -26,7 +26,7 @@
 /* Variable Define */
 SPI_Handle      spihandle1,spihandle2;
 SPI_Params      spiParams;
-SPI_Transaction spiTransaction2;
+SPI_Transaction spiTransaction, spiTransaction2;
 bool            transferOK,transferOK2;
 /* Function Declaration */
 void SPI_INIT();

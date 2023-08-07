@@ -6,10 +6,11 @@
  */
 
 /* Header files */
-#include "SPI.h"
-#include "HSPI.h"
-#include "lcdfont.h"
-#include "Others.h"
+#include "Module_files/SPI/Inc/SPI.h"
+#include "Module_files/OLED_HSPI/Inc/HSPI.h"
+#include "Module_files/OLED_HSPI/Inc/lcdfont.h"
+#include "Module_files/Others/Inc/Others.h"
+#include "Module_files/Host/Inc/Host.h"
 
 
 #define LCD_CS_CLR GPIO_write(SPI_0CS, 0)
@@ -28,15 +29,23 @@ _lcd_dev lcddev;
  */
 void SPI1Transmit(uint8_t * transmit , uint16_t count)
 {
-    SPI_Transaction spiTransaction;
+//    Display_printf(handle, 0, 0, "SPI Start");
     spiTransaction.count = count;
     spiTransaction.txBuf = transmit;
+    spiTransaction.rxBuf = (void *)NULL;
     transferOK = SPI_transfer(spihandle1, &spiTransaction);
     if (!transferOK)
     {
         // Error in SPI or transfer already in progress.
+        Display_printf(hosthandle, 0, 0, "%d" ,spiTransaction.status );
         while (1);
+
     }
+//    else
+//    {
+//        Display_printf(handle, 0, 0, "%d" ,spiTransaction.status );
+//    }
+
 }
 
 /*======== SPI1Transmit() ==========
@@ -44,7 +53,6 @@ void SPI1Transmit(uint8_t * transmit , uint16_t count)
  */
 void SPI1Receive(uint8_t * receive , uint16_t count)
 {
-    SPI_Transaction spiTransaction;
     spiTransaction.count = count;
     spiTransaction.rxBuf = receive;
     transferOK = SPI_transfer(spihandle1, &spiTransaction);
@@ -199,7 +207,8 @@ void LCD_SetCursor(uint16_t Xpos, uint16_t Ypos)
  */
 void LCD_Clear(uint16_t Color)
 {
-    unsigned int i, m;
+//    SPI_Transaction spiTransaction;
+    unsigned int i, k , m;
     uint8_t buf[80];
 
     for (i = 0; i < 40; i++)
@@ -216,7 +225,11 @@ void LCD_Clear(uint16_t Color)
         for (m = 0; m < lcddev.width;)
         {
             m += 40;
-            SPI1Transmit(buf, 80);
+            for(k=0;k<80;k=k+8)
+            {
+                SPI1Transmit(buf+k, 8);
+            }
+
         }
     }
     LCD_CS_SET;

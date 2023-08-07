@@ -54,9 +54,10 @@ typedef enum Color
 /* Variable Declaration */
 char rebuffer[10];
 extern pthread_t           mainthread_handler;
+uint8_t ALLPolling;
 
-uint8_t Disbuff[9];
-uint16_t Dis;           /// ´æ´¢¼ÆËã³öµÄ¾àÀë
+
+extern uint8_t Rangbuff[9];
 
 uint8_t L2,L1,M,R1,R2;
 uint8_t LED_Buff[6];

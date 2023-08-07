@@ -46,14 +46,16 @@
 #include <ti/drivers/Board.h>
 
 /* Thread Header files */
-#include <Threads/callbackThread/Inc/callbacks.h>
-#include <Threads/ledThread/Inc/led_thread.h>
-#include <Threads/mainThread/Inc/main_thread.h>
-#include <Threads/uartThread/Inc/uart_thread.h>
-#include <Threads/pcThread/Inc/PC_thread.h>
-#include <Threads/uart32Thread/Inc/uart32_thread.h>
+#include "Threads/callbackThread/Inc/callbacks.h"
+#include "Threads/lcdThread/Inc/lcd_thread.h"
+#include "Threads/mainThread/Inc/main_thread.h"
+#include "Threads/uartThread/Inc/uart_thread.h"
+#include "Threads/pcThread/Inc/PC_thread.h"
+#include "Threads/uart32Thread/Inc/uart32_thread.h"
+#include "Threads/cameraThread/Inc/camera_thread.h"
 /* Stack size in bytes */
 #define THREADSTACKSIZE    1024
+//#define THREADSTACKSIZE    2048
 
 /*
  *  ======== main ========
@@ -63,7 +65,7 @@ int main(void)
     /********** 线程变量定义 ***********/
     pthread_attr_t      pAttrs;             /// 线程属性
     struct sched_param  priParam;           /// 线程参数
-    struct mq_attr      attr;               /// 消息属性
+//    struct mq_attr      attr;               /// 消息属性
     int                 retc;               /// 保存返回值用于检测
     int                 detachState;        /// 线程分离状态
     /***********************************/
@@ -78,14 +80,14 @@ int main(void)
      *  oflag:O_RDONLY（只读）、O_WRONLY（只写）、O_RDWR（读写）
      *        O_CREAT（创造一个空的消息队列、O_NONBLOCK（接收消息非阻塞）
      */
-    attr.mq_maxmsg = LED_MSG_NUM;               /// 消息队列的最大数量
-    attr.mq_msgsize = LED_MSG_SIZE;             /// 消息的最大Size
-    attr.mq_flags = 0;                          /// 0 or O_NONBLOCK
-    mqUART = mq_open("uart", O_RDWR | O_CREAT | O_NONBLOCK, 0664, &attr);
-    if (mqLED == (mqd_t)-1)
-    {
-        while (1);
-    }
+//    attr.mq_maxmsg = LED_MSG_NUM;               /// 消息队列的最大数量
+//    attr.mq_msgsize = LED_MSG_SIZE;             /// 消息的最大Size
+//    attr.mq_flags = 0;                          /// 0 or O_NONBLOCK
+//    mqUART = mq_open("uart", O_RDWR | O_CREAT | O_NONBLOCK, 0664, &attr);
+//    if (mqLED == (mqd_t)-1)
+//    {
+//        while (1);
+//    }
     /***********************************/
 
 
@@ -97,31 +99,31 @@ int main(void)
      *  pshared:0 表示不在进程之间共享
      *  value:信号的初始值
      */
-    retc = sem_init(&semUART, 0, 0);
+    retc = sem_init(&semUART, 0, 0);            /// uartThread
     if (retc == -1)
     {
         while (1);
     }
 
-    retc = sem_init(&semUART1W, 0, 0);
+//    retc = sem_init(&semUART1W, 0, 0);          ///
+//    if (retc == -1)
+//    {
+//        while (1);
+//    }
+
+    retc = sem_init(&semPCW, 0, 0);            /// PC Thread
     if (retc == -1)
     {
         while (1);
     }
 
-    retc = sem_init(&semPCW, 0, 0);
+    retc = sem_init(&semPCR, 0, 0);           /// PC  Thread
     if (retc == -1)
     {
         while (1);
     }
 
-    retc = sem_init(&semPCR, 0, 0);
-    if (retc == -1)
-    {
-        while (1);
-    }
-
-    retc = sem_init(&semUART32, 0, 1);
+    retc = sem_init(&semUART32, 0, 0);
     if (retc == -1)
     {
         while (1);
@@ -132,11 +134,36 @@ int main(void)
     {
         while (1);
     }
-    retc = sem_init(&semUART32PC, 0, 0);
+
+    retc = sem_init(&semi2cWR, 0, 0);
     if (retc == -1)
     {
         while (1);
     }
+
+    retc = sem_init(&semi2cRE, 0, 0);
+    if (retc == -1)
+    {
+        while (1);
+    }
+
+
+    retc = sem_init(&semGW, 0, 0);
+    if (retc == -1)
+    {
+        while (1);
+    }
+
+    retc = sem_init(&semCA, 0, 0);
+    if (retc == -1)
+    {
+        while (1);
+    }
+//    retc = sem_init(&semUART32PC, 0, 0);
+//    if (retc == -1)
+//    {
+//        while (1);
+//    }
     /***********************************/
 
     /***********生成线程****************/
@@ -149,12 +176,12 @@ int main(void)
         while (1);
     }
     pthread_attr_setschedparam(&pAttrs, &priParam);
-    retc |= pthread_attr_setstacksize(&pAttrs, THREADSTACKSIZE);        /// 设置栈大小
+    retc |= pthread_attr_setstacksize(&pAttrs, 2048);        /// 设置栈大小
     if (retc != 0)
     {
         while (1);
     }
-    retc = pthread_create(&ledthread_handler, &pAttrs, ledThread, NULL);
+    retc = pthread_create(&pcthread_handler, &pAttrs, pcThread, NULL);
     if (retc != 0)
     {
         while (1);
@@ -165,7 +192,8 @@ int main(void)
      */
     priParam.sched_priority = 2;
     pthread_attr_setschedparam(&pAttrs, &priParam);
-    retc = pthread_create(&pcthread_handler, &pAttrs, pcThread, NULL);  /// PC调试线程
+    retc |= pthread_attr_setstacksize(&pAttrs, THREADSTACKSIZE);        /// 设置栈大小
+    retc = pthread_create(&lcdthread_handler, &pAttrs, lcdThread, NULL);  /// PC调试线程
     if (retc != 0)
     {
         while (1);
@@ -182,12 +210,23 @@ int main(void)
         while (1);
     }
 
+    /*
+     * =========第四个线程===========
+     */
+    priParam.sched_priority = 4;
+    pthread_attr_setschedparam(&pAttrs, &priParam);
+    retc = pthread_create(&camerathread_handler, &pAttrs, cameraThread, NULL);  /// camera线程，摄像头
+    if (retc != 0)
+    {
+        while (1);
+    }
+
 
     /*
      * =========第四个线程===========
      */
 
-    priParam.sched_priority = 4;
+    priParam.sched_priority = 5;
     pthread_attr_setschedparam(&pAttrs, &priParam);
     retc = pthread_create(&uart32thread_handler, &pAttrs, uart32Thread, NULL);  /// 与32通信的线程
     if (retc != 0)
@@ -197,7 +236,7 @@ int main(void)
     /*
      * =========第五个线程===========
      */
-    priParam.sched_priority = 5;
+    priParam.sched_priority = 6;
     pthread_attr_setschedparam(&pAttrs, &priParam);
     retc = pthread_create(&mainthread_handler, &pAttrs, mainThread, NULL);  /// 主线程
     if (retc != 0)

@@ -23,29 +23,34 @@ typedef enum wheelmode
     speed=2,        /// 速度环
     pwm=3           /// 设置PWM
 }wheelmode;
+
 /* Macro Declaration */
 #define TX2STM_LEN 20 //数据包大小
 
 /* Variable Declaration */
 extern pthread_t           uart32thread_handler;
-extern sem_t semUART32 , semUART32S , semUART32PC;
-uint8_t TX2STM_BUF[TX2STM_LEN];  //数据包缓存区
-uint8_t STM2RX_BUF[1];  //数据包缓存区
-
-wheel w;
-wheelmode wm;
-float wf;
-
-
+extern sem_t semUART32 , semUART32S , semGW;
+uint8_t TX2STM_BUF[TX2STM_LEN];  //发送数据包缓存区
+uint8_t STM2RX_BUF;           //接收数据包缓存区
+float BasicSp;
 
 /* Function Declaration */
 extern void *uart32Thread(void *arg0);
 void Trace();
-void Treasure();
+//void Treasure();
 void Read_Led();
 void Turn180();
 void TurnL90();
 void TurnR90();
 void Pos(float x);
+void PID_TurnOn();
+void TRACE_PID_ANA();
+void TRACE_PID_ANA2();
+void Avoid_Abs();
+float Calcu_ANA(float A);
+void Update_ANA();
+void Ping_STM32();
+void Ping_Ganwei();
+void Ganwei_INIT();
 
 #endif /* THREADS_UART32THREAD_INC_UART32_THREAD_H_ */

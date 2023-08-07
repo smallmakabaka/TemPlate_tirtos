@@ -41,36 +41,42 @@
 								<option id="com.ti.ccstudio.buildDefinitions.MSP432_20.2.compilerID.DIAG_WRAP.252933003" name="Wrap diagnostic messages (--diag_wrap)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_20.2.compilerID.DIAG_WRAP" useByScannerDiscovery="false" value="com.ti.ccstudio.buildDefinitions.MSP432_20.2.compilerID.DIAG_WRAP.off" valueType="enumerated"/>
 								<option id="com.ti.ccstudio.buildDefinitions.MSP432_20.2.compilerID.LITTLE_ENDIAN.1101478949" name="Little endian code [See 'General' page to edit] (--little_endian, -me)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_20.2.compilerID.LITTLE_ENDIAN" useByScannerDiscovery="false" value="true" valueType="boolean"/>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.ti.ccstudio.buildDefinitions.MSP432_20.2.compilerID.INCLUDE_PATH.1331644851" name="Add dir to #include search path (--include_path, -I)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_20.2.compilerID.INCLUDE_PATH" valueType="includePath">
-									<listOptionValue builtIn="false" value="${INHERITED_INCLUDE_PATH}"/>
-									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/Module_files/OLED_HSPI/Inc}"/>
-									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/Threads/pcThread/Inc}"/>
-									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/Module_files/DataPackage/Inc}"/>
-									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/Module_files/Type_Change/Inc}"/>
 									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/Module_files/Bluetooth/Inc}"/>
-									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/Threads/uartThread/Inc}"/>
-									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/Threads/ledThread/Inc}"/>
-									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/Threads/mainThread/Inc}"/>
+									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/Module_files/printf_master/Inc}"/>
 									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/Module_files/Button/Inc}"/>
+									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/Module_files/Cross/Inc}"/>
+									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/Module_files/DataPackage/Inc}"/>
+									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/Module_files/Host/Inc}"/>
+									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/Module_files/I2C/Inc}"/>
 									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/Module_files/LED/Inc}"/>
-									<listOptionValue builtIn="false" value="${PROJECT_ROOT}"/>
-									<listOptionValue builtIn="false" value="${PROJECT_ROOT}/${ConfigName}"/>
-									<listOptionValue builtIn="false" value="${COM_TI_SIMPLELINK_MSP432_SDK_INSTALL_DIR}/source"/>
 									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/Module_files/Motor/Inc}"/>
-									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/Threads/callbackThread/Inc}"/>
 									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/Module_files/OLED/Inc}"/>
+									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/Module_files/OLED_HSPI/Inc}"/>
 									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/Module_files/Others/Inc}"/>
 									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/Module_files/PID/Inc}"/>
 									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/Module_files/PWM/Inc}"/>
+									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/Module_files/SPI/Inc}"/>
 									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/Module_files/Timer32/Inc}"/>
+									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/Module_files/Type_Change/Inc}"/>
 									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/Module_files/UART/Inc}"/>
+									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/Threads/callbackThread/Inc}"/>
+									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/Threads/lcdThread/Inc}"/>
+									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/Threads/mainThread/Inc}"/>
+									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/Threads/pcThread/Inc}"/>
+									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/Threads/uart32Thread/Inc}"/>
+									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/Threads/uartThread/Inc}"/>
+									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/Threads/cameraThread/Inc}"/>
+									<listOptionValue builtIn="false" value="${PROJECT_ROOT}"/>
+									<listOptionValue builtIn="false" value="${PROJECT_ROOT}/${ConfigName}"/>
+									<listOptionValue builtIn="false" value="${COM_TI_SIMPLELINK_MSP432_SDK_INSTALL_DIR}/source"/>
 									<listOptionValue builtIn="false" value="${COM_TI_SIMPLELINK_MSP432_SDK_INSTALL_DIR}/source/third_party/CMSIS/Include"/>
 									<listOptionValue builtIn="false" value="${COM_TI_SIMPLELINK_MSP432_SDK_INSTALL_DIR}/source/ti/posix/ccs"/>
 									<listOptionValue builtIn="false" value="${CG_TOOL_ROOT}/include"/>
 								</option>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.ti.ccstudio.buildDefinitions.MSP432_20.2.compilerID.DEFINE.1850740054" name="Pre-define NAME (--define, -D)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_20.2.compilerID.DEFINE" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="${INHERITED_SYMBOLS}"/>
-									<listOptionValue builtIn="false" value="__MSP432P401R__"/>
 									<listOptionValue builtIn="false" value="DeviceFamily_MSP432P401x"/>
+									<listOptionValue builtIn="false" value="__MSP432P401R__"/>
 								</option>
 								<option id="com.ti.ccstudio.buildDefinitions.MSP432_20.2.compilerID.ADVICE__POWER.794940266" name="Enable checking of ULP power rules (--advice:power)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_20.2.compilerID.ADVICE__POWER" useByScannerDiscovery="false" value="" valueType="string"/>
 								<option id="com.ti.ccstudio.buildDefinitions.MSP432_20.2.compilerID.SILICON_VERSION.82144159" name="Target processor version (--silicon_version, -mv)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_20.2.compilerID.SILICON_VERSION" useByScannerDiscovery="false" value="com.ti.ccstudio.buildDefinitions.MSP432_20.2.compilerID.SILICON_VERSION.7M4" valueType="enumerated"/>
@@ -192,50 +198,6 @@
 							<tool id="com.ti.ccstudio.buildDefinitions.MSP432_20.2.exe.linkerDebug.1454979665" name="Arm Linker" superClass="com.ti.ccstudio.buildDefinitions.MSP432_20.2.exe.linkerDebug.1267329299"/>
 							<tool id="com.ti.ccstudio.buildDefinitions.MSP432_20.2.hex.1834755203" name="Arm Hex Utility" superClass="com.ti.ccstudio.buildDefinitions.MSP432_20.2.hex.1040330847"/>
 							<tool id="com.ti.ccstudio.buildDefinitions.sysConfig.403936817" name="SysConfig" superClass="com.ti.ccstudio.buildDefinitions.sysConfig.507452032"/>
-						</toolChain>
-					</folderInfo>
-					<folderInfo id="com.ti.ccstudio.buildDefinitions.MSP432.Debug.401219595.1804349524" name="/" resourcePath="Module_files">
-						<toolChain id="com.ti.ccstudio.buildDefinitions.MSP432_20.2.exe.DebugToolchain.993771267" name="TI Build Tools" superClass="com.ti.ccstudio.buildDefinitions.MSP432_20.2.exe.DebugToolchain" unusedChildren="">
-							<option id="com.ti.ccstudio.buildDefinitions.core.OPT_TAGS.318758799.477553703" superClass="com.ti.ccstudio.buildDefinitions.core.OPT_TAGS.318758799"/>
-							<option id="com.ti.ccstudio.buildDefinitions.core.OPT_CODEGEN_VERSION.987360354.1784749139" name="Compiler version" superClass="com.ti.ccstudio.buildDefinitions.core.OPT_CODEGEN_VERSION.987360354"/>
-							<targetPlatform id="com.ti.ccstudio.buildDefinitions.MSP432_20.2.exe.targetPlatformDebug" name="Platform" superClass="com.ti.ccstudio.buildDefinitions.MSP432_20.2.exe.targetPlatformDebug"/>
-							<tool id="com.ti.ccstudio.buildDefinitions.MSP432_20.2.exe.compilerDebug.496676193" name="Arm Compiler" superClass="com.ti.ccstudio.buildDefinitions.MSP432_20.2.exe.compilerDebug.766494651">
-								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.ti.ccstudio.buildDefinitions.MSP432_20.2.compilerID.INCLUDE_PATH.413459882" name="Add dir to #include search path (--include_path, -I)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_20.2.compilerID.INCLUDE_PATH" valueType="includePath">
-									<listOptionValue builtIn="false" value="E:/CCS_Workplace/workspace_v3/Template_tirtos/Module_files/OLED_HSPI/Inc"/>
-									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/Module_files/SPI/Inc}"/>
-									<listOptionValue builtIn="false" value="E:/CCS_Workplace/workspace_v3/Template_tirtos/Threads/pcThread/Inc"/>
-									<listOptionValue builtIn="false" value="E:/CCS_Workplace/workspace_v3/Template_tirtos/Module_files/DataPackage/Inc"/>
-									<listOptionValue builtIn="false" value="E:/CCS_Workplace/workspace_v3/Template_tirtos/Module_files/Type_Change/Inc"/>
-									<listOptionValue builtIn="false" value="E:/CCS_Workplace/workspace_v3/Template_tirtos/Module_files/Bluetooth/Inc"/>
-									<listOptionValue builtIn="false" value="E:/CCS_Workplace/workspace_v3/Template_tirtos/Threads/uartThread/Inc"/>
-									<listOptionValue builtIn="false" value="E:/CCS_Workplace/workspace_v3/Template_tirtos/Threads/ledThread/Inc"/>
-									<listOptionValue builtIn="false" value="E:/CCS_Workplace/workspace_v3/Template_tirtos/Threads/mainThread/Inc"/>
-									<listOptionValue builtIn="false" value="E:/CCS_Workplace/workspace_v3/Template_tirtos/Module_files/Button/Inc"/>
-									<listOptionValue builtIn="false" value="E:/CCS_Workplace/workspace_v3/Template_tirtos/Module_files/LED/Inc"/>
-									<listOptionValue builtIn="false" value="E:/CCS_Workplace/workspace_v3/Template_tirtos"/>
-									<listOptionValue builtIn="false" value="E:/CCS_Workplace/workspace_v3/Template_tirtos/Debug"/>
-									<listOptionValue builtIn="false" value="E:/ti/simplelink_msp432p4_sdk_3_40_01_02/source"/>
-									<listOptionValue builtIn="false" value="E:/CCS_Workplace/workspace_v3/Template_tirtos/Module_files/Motor/Inc"/>
-									<listOptionValue builtIn="false" value="E:/CCS_Workplace/workspace_v3/Template_tirtos/Threads/callbackThread/Inc"/>
-									<listOptionValue builtIn="false" value="E:/CCS_Workplace/workspace_v3/Template_tirtos/Module_files/OLED/Inc"/>
-									<listOptionValue builtIn="false" value="E:/CCS_Workplace/workspace_v3/Template_tirtos/Module_files/Others/Inc"/>
-									<listOptionValue builtIn="false" value="E:/CCS_Workplace/workspace_v3/Template_tirtos/Module_files/PID/Inc"/>
-									<listOptionValue builtIn="false" value="E:/CCS_Workplace/workspace_v3/Template_tirtos/Module_files/PWM/Inc"/>
-									<listOptionValue builtIn="false" value="E:/CCS_Workplace/workspace_v3/Template_tirtos/Module_files/Timer32/Inc"/>
-									<listOptionValue builtIn="false" value="E:/CCS_Workplace/workspace_v3/Template_tirtos/Module_files/UART/Inc"/>
-									<listOptionValue builtIn="false" value="E:/ti/simplelink_msp432p4_sdk_3_40_01_02/source/third_party/CMSIS/Include"/>
-									<listOptionValue builtIn="false" value="E:/ti/simplelink_msp432p4_sdk_3_40_01_02/source/ti/posix/ccs"/>
-									<listOptionValue builtIn="false" value="D:/ti/ccs1220/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include"/>
-									<listOptionValue builtIn="false" value="E:/CCS_Workplace/workspace_v3/Template_tirtos/Debug/syscfg"/>
-								</option>
-								<inputType id="com.ti.ccstudio.buildDefinitions.MSP432_20.2.compiler.inputType__C_SRCS.917948158" name="C Sources" superClass="com.ti.ccstudio.buildDefinitions.MSP432_20.2.compiler.inputType__C_SRCS"/>
-								<inputType id="com.ti.ccstudio.buildDefinitions.MSP432_20.2.compiler.inputType__CPP_SRCS.415574331" name="C++ Sources" superClass="com.ti.ccstudio.buildDefinitions.MSP432_20.2.compiler.inputType__CPP_SRCS"/>
-								<inputType id="com.ti.ccstudio.buildDefinitions.MSP432_20.2.compiler.inputType__ASM_SRCS.411438760" name="Assembly Sources" superClass="com.ti.ccstudio.buildDefinitions.MSP432_20.2.compiler.inputType__ASM_SRCS"/>
-								<inputType id="com.ti.ccstudio.buildDefinitions.MSP432_20.2.compiler.inputType__ASM2_SRCS.1686811546" name="Assembly Sources" superClass="com.ti.ccstudio.buildDefinitions.MSP432_20.2.compiler.inputType__ASM2_SRCS"/>
-							</tool>
-							<tool id="com.ti.ccstudio.buildDefinitions.MSP432_20.2.exe.linkerDebug.1576576697" name="Arm Linker" superClass="com.ti.ccstudio.buildDefinitions.MSP432_20.2.exe.linkerDebug.28067802"/>
-							<tool id="com.ti.ccstudio.buildDefinitions.MSP432_20.2.hex.800265384" name="Arm Hex Utility" superClass="com.ti.ccstudio.buildDefinitions.MSP432_20.2.hex.956420699"/>
-							<tool id="com.ti.ccstudio.buildDefinitions.sysConfig.260958924" name="SysConfig" superClass="com.ti.ccstudio.buildDefinitions.sysConfig.534716211"/>
 						</toolChain>
 					</folderInfo>
 				</configuration>

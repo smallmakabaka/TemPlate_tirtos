@@ -6,7 +6,7 @@ Declaration:未经允许，禁止用于商业用途
 *************************************/
 
 /* Header files */
-#include "Timer32.h"
+#include "Module_files/Timer32/Inc/Timer32.h"
 
 
 /*  功能：Timer32初始化

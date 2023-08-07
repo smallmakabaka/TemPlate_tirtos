@@ -50,17 +50,19 @@
 
 /* Thread Header files */
 #include <Threads/callbackThread/Inc/callbacks.h>
-#include <Threads/ledThread/Inc/led_thread.h>
 #include <Threads/mainThread/Inc/main_thread.h>
 #include <Threads/uartThread/Inc/uart_thread.h>
 #include <Threads/pcThread/Inc/PC_thread.h>
 #include <Threads/uart32Thread/Inc/uart32_thread.h>
+#include <Threads/lcdThread/Inc/lcd_thread.h>
+#include <Threads/cameraThread/Inc/camera_thread.h>
 
 #include <Module_files/Button/Inc/Button.h>
 #include <Module_files/LED/Inc/LED.h>
 #include <Module_files/DataPackage/Inc/DataPackage.h>
 #include <Module_files/UART/Inc/UART.h>
-
+#include <Module_files/I2C/Inc/I2C.h>
+#include <Module_files/Others/Inc/Others.h>
 /*========= WriteUART1_Callback() ========
  *  UART1 的写回调,征用为 PC调试器时使用
  */
@@ -77,6 +79,7 @@
 
 /*========= ReadUART1_Callback() ========
  *  UART1 的读回调
+ *  发送一次读取命令后开启读取，读取完成后释放semUART，重复此过程
  */
 void ReadUART1_Callback (UART_Handle handle,void *buf,size_t count)
 {
@@ -86,11 +89,6 @@ void ReadUART1_Callback (UART_Handle handle,void *buf,size_t count)
     {
         while (1);
     }
-//    UART_writeCancel(uartHandle1);      /// 停止写
-//    UART_readCancel(uartHandle1);       /// 停止读
-//    UART_close(uartHandle1);            /// 关闭串口1
-//    read_status=1;
-//    close_status=1;
 }
 
 /*========= ReadUART2_Callback() ========
@@ -122,34 +120,81 @@ void WriteUART2_Callback (UART_Handle handle,void *buf,size_t count)
 
 /*========= ReadUART3_Callback() ========
  *  UART3 的读回调
+ *  读取到开始信号（0X12）后释放 semUART32S，此外每读取一次释放一次 semUART32
  */
 void ReadUART3_Callback (UART_Handle handle,void *buf,size_t count)
 {
+//    int rc;
+//    if(STM2RX_BUF==0x66)                                /// STM32准备好接收数据
+//    {
+//        rc = sem_post(&semUART32S);                             /// 释放信号
+//        if (rc == -1)
+//        {
+//            while (1);
+//        }
+//    }
+//    else if(STM2RX_BUF[0]==0x11)                                 /// 位置环执行完毕
+//    {
+//        rc = sem_post(&semUART32);                              /// 释放信号
+//        if (rc == -1)
+//        {
+//            while (1);
+//        }
+//    }
     int rc;
-    if(STM2RX_BUF[0]==0x12)                                /// STM32准备好接收数据
-    {
-        rc = sem_post(&semUART32S);                             /// 释放信号
-        if (rc == -1)
-        {
-            while (1);
-        }
-    }
-    else if(STM2RX_BUF[0]==0x11)                                 /// 位置环执行完毕
-    {
-        rc = sem_post(&semUART32);                              /// 释放信号
-        if (rc == -1)
-        {
-            while (1);
-        }
-    }
-    rc = sem_post(&semUART32PC);                              /// 释放信号
+    rc = sem_post(&semUART32);                              /// 释放信号
     if (rc == -1)
     {
         while (1);
     }
 
-
 }
 
+/*======== I2C_CallBackFxn() =================
+ * 功能：I2C的回调函数
+ * 当i2cstatus为true时，工作在写状态；i2cstatus为false时，工作在读状态
+ *
+ */
+void I2C_CallBackFxn(I2C_Handle handle, I2C_Transaction *msg, bool status)
+{
 
+    /************** 写->读->写........***************/
+//    if (status == false)
+//    {
+//        while(1);
+//    }
+//    else
+//    {
+//        if(i2cstatus)
+//        {
+//            sem_post(&semi2cRE);
+//
+//        }
+//        else
+//        {
+//
+//            sem_post(&semi2cWR);
+//        }
+//    }
+    /***********************************************/
+
+
+   /*************** 不断读 ************************/
+    sem_post(&semi2cRE);
+    /**********************************************/
+}
+
+///*======== I2CSlaveCallBackFxn() =================
+// * 功能：I2CSlave的回调函数
+// */
+//
+//void I2CSlaveCallBackFxn(I2CSlave_Handle handle, bool status)
+//{
+//    int rc;
+//    rc = sem_post(&semi2cslave);                              /// 释放信号
+//    if (rc == -1)
+//    {
+//        while (1);
+//    }
+//}
 

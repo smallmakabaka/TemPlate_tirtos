@@ -21,13 +21,14 @@ Declaration:未经允许，禁止用于商业用途
 
 
 /* Variable Define */
-UART_Params uartparams1;
+UART_Params uartparams1 , uartparams2 , uartparams3;
 UART_Handle uartHandle1,uartHandle2,uartHandle3;
 uint8_t readbuffer[10];
 uint8_t read_status,close_status;
 
 /* Function Declaration */
 void UART_INIT();
+void UART3_DEINIT();
 //void WriteUART1_Callback (UART_Handle handle,void *buf,size_t count);
 void ReadUART1_Callback (UART_Handle handle,void *buf,size_t count);
 void ReadUART2_Callback (UART_Handle handle,void *buf,size_t count);

@@ -20,11 +20,33 @@ Declaration:未经允许，禁止用于商业用途
 /* User Header files */
 ///
 
+typedef enum MODE
+{
+    Free_MODE=0,
+    Update_MODE=1,
+    Trace_MODE=2
+}MODE;
+
+typedef enum CAR
+{
+    Car_Stop=0,
+    Car_Left=1,
+    Car_Right=2,
+    Car_Running
+}CAR;
+
+typedef enum ISCHANGE
+{
+    NOT_Change=0,
+    IS_Change=1
+}ISCHANGE;
+
 /* Variable Define */
 Button_Params buttonparams;
 Button_Handle buttonhandle1,buttonhandle2;
-uint8_t Mode;                   /// 用于模式区分
-
+MODE Mode;                   /// 用于模式区分
+CAR Car;
+ISCHANGE Mode_Change , Car_Change;
 
 /* Function Declaration */
 void Button_INIT();

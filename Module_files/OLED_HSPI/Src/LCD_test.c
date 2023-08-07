@@ -4,15 +4,15 @@
  *	Date:2023年7月18日
  *	Declaration:未经允许，禁止用于商业用途
  */
-#include "HSPI.h"
-#include "logo.h"
-#include "pic.h"
-#include "Others.h"
+#include "Module_files/OLED_HSPI/Inc/HSPI.h"
+#include "Module_files/OLED_HSPI/Inc/logo.h"
+#include "Module_files/Others/Inc/Others.h"
+
 void LCDTest()
 {
     uint16_t j;
     LCD_Init();
-    LCD_Clear(BLACK);
+//    LCD_Clear(BLACK);
     LCD_ShowPicture(0, 0, 240, 40, gImage_logo);
     LCD_ShowString(10, 56, (uint8_t *)"LCD_W:", GREEN, BLACK, 16, 0);
     LCD_ShowIntNum(58, 56, LCD_W, 3, WHITE, BLACK, 16);

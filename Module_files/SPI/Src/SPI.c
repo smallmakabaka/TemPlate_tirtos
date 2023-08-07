@@ -11,7 +11,7 @@
  *  引脚：SPI（MOSI、MISO、SCL）、GPIO(RES、CS、DC（命令数据切换）、BLK（背光控制）)
  */
 
-#include "SPI.h"
+#include "Module_files/SPI/Inc/SPI.h"
 void SPI_INIT()
 {
 
@@ -21,7 +21,8 @@ void SPI_INIT()
     spiParams.frameFormat= SPI_POL0_PHA0;       // 极性 1 相位 1
     spiParams.dataSize = 8;                     // 8位数据帧
     spiParams.transferMode=SPI_MODE_BLOCKING;   // 阻塞
-    spihandle1 = SPI_open(SPI_1, &spiParams);
+    spiParams. bitRate=12000000;
+    spihandle1 = SPI_open(SPI_1, &spiParams);   // 比特率
     if (spihandle1 == NULL)
     {
         while (1);  // SPI_open() failed

@@ -25,7 +25,7 @@
 #include <ti/drivers/GPIO.h>
 
 /* User Header files */
-///
+
 
 typedef struct
 {
